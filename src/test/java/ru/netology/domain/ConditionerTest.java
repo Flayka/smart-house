@@ -27,7 +27,7 @@ class ConditionerTest {
     }
 
     @Test
-    void shouldGetAboveMaxTemp() {
+    void shouldTempIsMaxTemp() {
         Conditioner conditioner = new Conditioner();
         conditioner.setCurrentTemperature(35);
         conditioner.increaseCurrentTemperature();
@@ -37,7 +37,7 @@ class ConditionerTest {
     }
 
     @Test
-    void shouldGetBelowMinTemp() {
+    void shouldTempIsMinTemp() {
         Conditioner conditioner = new Conditioner();
         conditioner.setCurrentTemperature(5);
         conditioner.decreaseCurrentTemperature();;
@@ -45,4 +45,24 @@ class ConditionerTest {
         int expected = 5;
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldTempAboveMaxTemp() {
+        Conditioner conditioner = new Conditioner();
+        conditioner.setCurrentTemperature(50);
+        conditioner.increaseCurrentTemperature();
+        int actual = conditioner.getCurrentTemperature();
+        int expected = 35;
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldTempBelowMinTemp() {
+        Conditioner conditioner = new Conditioner();
+        conditioner.setCurrentTemperature(2);
+        conditioner.decreaseCurrentTemperature();;
+        int actual = conditioner.getCurrentTemperature();
+        int expected = 5;
+        assertEquals(expected, actual);
+    }
+
 }
